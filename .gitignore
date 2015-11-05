@@ -1,0 +1,7 @@
+build/
+.idea/
+data/
+*.csv
+*.json
+.DS_Store
+
