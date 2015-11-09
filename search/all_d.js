@@ -1,11 +1,8 @@
 var searchData=
 [
-  ['readme_2emd',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
-  ['report_5ffilename',['report_filename',['../structfea_1_1_options.html#a7cb6bd0d7f4c5a684143324c65d31973',1,'fea::Options']]],
-  ['rmult',['rmult',['../structfea_1_1_tie.html#a0749f1dff71abd77be8630965792f212',1,'fea::Tie']]],
-  ['rotation_5fx',['ROTATION_X',['../namespacefea.html#aeaca75d33e81b79c9282f3e69a238d72a5875f07a4a341f6533903a95fb7fe616',1,'fea']]],
-  ['rotation_5fy',['ROTATION_Y',['../namespacefea.html#aeaca75d33e81b79c9282f3e69a238d72a21233443a44145b64de8926e26a32125',1,'fea']]],
-  ['rotation_5fz',['ROTATION_Z',['../namespacefea.html#aeaca75d33e81b79c9282f3e69a238d72adfd643a8bc8c19273cb8fb809692d97c',1,'fea']]],
-  ['row',['row',['../summary_8cpp.html#a97ab3b8ef2f074e3774c66099d7ec59b',1,'summary.cpp']]],
-  ['runanalysis',['runAnalysis',['../cmd_8cpp.html#ab7c3e62134c4637270fa4f9e59fe7b7a',1,'cmd.cpp']]]
+  ['operator_28_29',['operator()',['../classfea_1_1_global_stiff_assembler.html#ae07a113c97d0aa76a6391b4697961875',1,'fea::GlobalStiffAssembler']]],
+  ['operator_3e_3e',['operator&gt;&gt;',['../namespacefea.html#a939c98c33c7d1076d1e9feed06b9b753',1,'fea::operator&gt;&gt;(std::istream &amp;ins, std::vector&lt; T &gt; &amp;record)'],['../namespacefea.html#ac34163f744a2b10263263c4a4d4ba7d4',1,'fea::operator&gt;&gt;(std::istream &amp;ins, std::vector&lt; std::vector&lt; T &gt; &gt; &amp;data)']]],
+  ['options',['Options',['../structfea_1_1_options.html#a807e228c27c1354d786c712a0c792605',1,'fea::Options']]],
+  ['options',['Options',['../structfea_1_1_options.html',1,'fea']]],
+  ['options_2eh',['options.h',['../options_8h.html',1,'']]]
 ];

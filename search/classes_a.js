@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tie',['Tie',['../structfea_1_1_tie.html',1,'fea']]]
+  ['summary',['Summary',['../structfea_1_1_summary.html',1,'fea']]]
 ];

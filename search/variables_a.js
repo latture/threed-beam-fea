@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['save_5fnodal_5fdisplacements',['save_nodal_displacements',['../structfea_1_1_options.html#a1d053be484e4c5a79d0eab2447883823',1,'fea::Options']]],
-  ['save_5fnodal_5fforces',['save_nodal_forces',['../structfea_1_1_options.html#a7ef9cc3bf01c181a3cf34fc4451cd4e9',1,'fea::Options']]],
-  ['save_5freport',['save_report',['../structfea_1_1_options.html#ade08eb8049e28924b16f62aa177ae4d8',1,'fea::Options']]],
-  ['save_5ftie_5fforces',['save_tie_forces',['../structfea_1_1_options.html#a7a8d38f369c7c5969863915273d26484',1,'fea::Options']]],
-  ['solve_5ftime_5fin_5fms',['solve_time_in_ms',['../structfea_1_1_summary.html#a3f04208347e3d8e02dd3aeb18e40cc1a',1,'fea::Summary']]]
+  ['report_5ffilename',['report_filename',['../structfea_1_1_options.html#a7cb6bd0d7f4c5a684143324c65d31973',1,'fea::Options']]],
+  ['rmult',['rmult',['../structfea_1_1_tie.html#a0749f1dff71abd77be8630965792f212',1,'fea::Tie']]],
+  ['row',['row',['../summary_8cpp.html#a97ab3b8ef2f074e3774c66099d7ec59b',1,'summary.cpp']]]
 ];
