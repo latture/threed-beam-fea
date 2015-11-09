@@ -1,13 +1,18 @@
 cmake_minimum_required(VERSION 2.8.11)
 project(ThreedBeamFEA)
 
+if (NOT CMAKE_BUILD_TYPE)
+    message(STATUS "No build type selected, default to Release")
+    set(CMAKE_BUILD_TYPE "Release")
+endif()
+
 option(FEA_BUILD_UNIT_TESTS "Build unit tests" ON)
 option(FEA_BUILD_EXAMPLES "Build examples" ON)
-option(FEA_BUILD_GUI "Build Qt GUI" ON)
+option(FEA_BUILD_GUI "Build Qt GUI" OFF)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
 
-set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -O3")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -O3 -fopenmp")
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
