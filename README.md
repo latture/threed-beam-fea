@@ -10,14 +10,13 @@ Alternatively, I can package pre-built binaries if there is interest. \n
   1. Open the `threed-beam-fea` directory
   2. Create a folder named `build`
   3. Open a terminal and navigate to the newly formed `build` directory
-  4. Execute `cmake .. -DCMAKE_BUILD_TYPE=release`
-    * Use `-DCMAKE_BUILD_TYPE=debug` if you would like to build the code for debugging purposes.
-    * If you wish to build the GUI execute `cmake .. -DFEA_BUILD_GUI=ON -DQt5Widgets_DIR:STRING="/path/to/Qt5Widgets"`
+  4. Execute `cmake ..`
+    * Use `-DCMAKE_BUILD_TYPE=debug` if you would like to build the code for debugging purposes. By default the make files will be configured for the release build.
+    * If you wish to build the GUI execute `cmake .. -DFEA_BUILD_GUI=ON -DCMAKE_PREFIX_PATH="/path/to/Qt"`
       - This requires you have Qt >= 5.0 installed.
       - `-DFEA_BUILD_GUI=ON` tells cmake to add the `../gui` subdirectory and adds `fea_gui` to the targets.
-      - `-DQt5Widgets_DIR:STRING="/path/to/Qt5Widgets"` should be the path to the Qt5WidgetsConfig.cmake file. \n
-        As an example, on my computer the flag is set to "/home/ryan/Qt/5.5/gcc_64/lib/cmake/Qt5Widgets", though this will be different on your machine. \n
-        This variable tells CMake where find the module that defines the Qt macros and the location of the Qt libraries.
+      - `-DCMAKE_PREFIX_PATH="/path/to/Qt"` should be the path to the Qt root directory. \n
+        As an example, on my computer the flag is set to "/home/ryan/Qt/5.5/gcc_64/", though this will be different on your machine.
   5. On Linux run `make` in the terminal from the build directory to build all the targets. On Windows the solution file will be located in the build directory. Open the solution file in Visual Studio and compile.
 
 ## Introduction ##
