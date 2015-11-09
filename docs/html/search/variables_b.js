@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['tie_5fforces',['tie_forces',['../structfea_1_1_summary.html#af1822f670a2d6bfbf76f042a0cb544ff',1,'fea::Summary']]],
-  ['tie_5fforces_5ffilename',['tie_forces_filename',['../structfea_1_1_options.html#ac2e6f3775305271dd59162452e26de47',1,'fea::Options']]],
-  ['tie_5fforces_5fsolve_5ftime_5fin_5fms',['tie_forces_solve_time_in_ms',['../structfea_1_1_summary.html#a50eb11c9ac985bfef6458fa40eb2c060',1,'fea::Summary']]],
-  ['total_5ftime_5fin_5fms',['total_time_in_ms',['../structfea_1_1_summary.html#a37e4d55928271b4c0fbf0dec97888de0',1,'fea::Summary']]]
+  ['save_5fnodal_5fdisplacements',['save_nodal_displacements',['../structfea_1_1_options.html#a1d053be484e4c5a79d0eab2447883823',1,'fea::Options']]],
+  ['save_5fnodal_5fforces',['save_nodal_forces',['../structfea_1_1_options.html#a7ef9cc3bf01c181a3cf34fc4451cd4e9',1,'fea::Options']]],
+  ['save_5freport',['save_report',['../structfea_1_1_options.html#ade08eb8049e28924b16f62aa177ae4d8',1,'fea::Options']]],
+  ['save_5ftie_5fforces',['save_tie_forces',['../structfea_1_1_options.html#a7a8d38f369c7c5969863915273d26484',1,'fea::Options']]],
+  ['solve_5ftime_5fin_5fms',['solve_time_in_ms',['../structfea_1_1_summary.html#a3f04208347e3d8e02dd3aeb18e40cc1a',1,'fea::Summary']]],
+  ['stringdata0',['stringdata0',['../structqt__meta__stringdata___main_window__t.html#a71805e880749e14b6a5c4340670a8e93',1,'qt_meta_stringdata_MainWindow_t']]]
 ];

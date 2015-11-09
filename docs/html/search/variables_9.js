@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['report_5ffilename',['report_filename',['../structfea_1_1_options.html#a7cb6bd0d7f4c5a684143324c65d31973',1,'fea::Options']]],
-  ['rmult',['rmult',['../structfea_1_1_tie.html#a0749f1dff71abd77be8630965792f212',1,'fea::Tie']]],
-  ['row',['row',['../summary_8cpp.html#a97ab3b8ef2f074e3774c66099d7ec59b',1,'summary.cpp']]]
+  ['preprocessing_5ftime_5fin_5fms',['preprocessing_time_in_ms',['../structfea_1_1_summary.html#a433a0565c3650f0c564a23f32def5c25',1,'fea::Summary']]],
+  ['props',['props',['../structfea_1_1_elem.html#a88281e9641b36b35643c099c0c6b3221',1,'fea::Elem::props()'],['../structfea_1_1_job.html#a5d49a6edc7d07b58958d8dce331b6414',1,'fea::Job::props()']]]
 ];

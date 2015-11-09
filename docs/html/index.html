@@ -94,14 +94,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>Open the <code>threed-beam-fea</code> directory</li>
 <li>Create a folder named <code>build</code></li>
 <li>Open a terminal and navigate to the newly formed <code>build</code> directory</li>
-<li>Execute <code>cmake .. -DCMAKE_BUILD_TYPE=release</code><ul>
-<li>Use <code>-DCMAKE_BUILD_TYPE=debug</code> if you would like to build the code for debugging purposes.</li>
-<li>If you wish to build the GUI execute <code>cmake .. -DFEA_BUILD_GUI=ON -DQt5Widgets_DIR:STRING="/path/to/Qt5Widgets"</code><ul>
+<li>Execute <code>cmake ..</code><ul>
+<li>Use <code>-DCMAKE_BUILD_TYPE=debug</code> if you would like to build the code for debugging purposes. By default the make files will be configured for the release build.</li>
+<li>If you wish to build the GUI execute <code>cmake .. -DFEA_BUILD_GUI=ON -DCMAKE_PREFIX_PATH="/path/to/Qt"</code><ul>
 <li>This requires you have Qt &gt;= 5.0 installed.</li>
 <li><code>-DFEA_BUILD_GUI=ON</code> tells cmake to add the <code>../gui</code> subdirectory and adds <code>fea_gui</code> to the targets.</li>
-<li><code>-DQt5Widgets_DIR:STRING="/path/to/Qt5Widgets"</code> should be the path to the Qt5WidgetsConfig.cmake file. <br />
- As an example, on my computer the flag is set to "/home/ryan/Qt/5.5/gcc_64/lib/cmake/Qt5Widgets", though this will be different on your machine. <br />
- This variable tells CMake where find the module that defines the Qt macros and the location of the Qt libraries.</li>
+<li><code>-DCMAKE_PREFIX_PATH="/path/to/Qt"</code> should be the path to the Qt root directory. <br />
+ As an example, on my computer the flag is set to "/home/ryan/Qt/5.5/gcc_64/", though this will be different on your machine.</li>
 </ul>
 </li>
 </ul>
@@ -323,7 +322,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 5 2015 10:34:37 for 3D Beam Finite Element Code by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 9 2015 11:57:00 for 3D Beam Finite Element Code by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.10
 </small></address>
