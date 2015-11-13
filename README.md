@@ -5,7 +5,7 @@ This project requires CMake to compile the code. If not installed, install CMake
 If you intend on building the GUI, Qt must be installed and the path to the Qt5WidgetsConfig.cmake file must be set when invoking CMake.
 Currently, the following method of building the GUI works on Mac and Linux.
 If running on Windows, open the fea_gui.pro file with QtCreator (included with the Qt installation) and run.
-Alternatively, I can package pre-built binaries if there is interest. \n
+Alternatively, I can package pre-built binaries if there is interest.
 #### To compile the code: ####
   1. Open the `threed-beam-fea` directory
   2. Create a folder named `build`
@@ -15,7 +15,7 @@ Alternatively, I can package pre-built binaries if there is interest. \n
     * If you wish to build the GUI execute `cmake .. -DFEA_BUILD_GUI=ON -DCMAKE_PREFIX_PATH="/path/to/Qt"`
       - This requires you have Qt >= 5.0 installed.
       - `-DFEA_BUILD_GUI=ON` tells cmake to add the `../gui` subdirectory and adds `fea_gui` to the targets.
-      - `-DCMAKE_PREFIX_PATH="/path/to/Qt"` should be the path to the Qt root directory. \n
+      - `-DCMAKE_PREFIX_PATH="/path/to/Qt"` should be the path to the Qt root directory.
         As an example, on my computer the flag is set to "/home/ryan/Qt/5.5/gcc_64/", though this will be different on your machine.
   5. On Linux run `make` in the terminal from the build directory to build all the targets. On Windows the solution file will be located in the build directory. Open the solution file in Visual Studio and compile.
 
