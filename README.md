@@ -29,12 +29,12 @@ The latter of which ties to nodes together via a linear springs between all tran
 The `fea::Options` struct can be used to request results of the analysis be written to disk as well as modify various aspect of the analysis.
 
 #### Forming the job ####
-The job defines the nodal coordinates in \f$(x, y, z)\f$ space,
+The job defines the nodal coordinates in ``(x, y, z)`` space,
 the nodes that are connected to form beam elements, and the elemental properties.
-The nodal coordinates are formed as a vector of `fea::Node`'s where each node simply contains the \f$(x, y, z)\f$ coordinates of the point.
+The nodal coordinates are formed as a vector of `fea::Node`'s where each node simply contains the `(x, y, z)` coordinates of the point.
 An element contains the 2 nodal indices that are connected to form the element as well as the associated properties of the element.
-The properties must define the extensional stiffness, \f$EA\f$, bending stiffness parallel to the local z-axis \f$EI_{z}\f$,
-bending stiffness parallel to the local y-axis\f$EI_{y}\f$, the torsional stiffness, \f$GJ\f$, and a vector pointing along the beam elements local y-axis.
+The properties must define the extensional stiffness, `EA`, bending stiffness parallel to the local z-axis `EIz`,
+bending stiffness parallel to the local y-axis `EIy`, the torsional stiffness, `GJ`, and a vector pointing along the beam elements local y-axis.
 An example forming a simple job with a single element is shown below.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.cpp}
