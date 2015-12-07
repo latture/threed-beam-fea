@@ -1,7 +1,7 @@
 # 3D linear beam element code  #
 
 ## Getting started ##
-This project requires CMake to compile the code. If not installed, install CMake before continuing.
+This project requires CMake to compile the code. If not installed, please install CMake before continuing.
 If you intend on building the GUI, Qt must be installed and the path to the Qt5WidgetsConfig.cmake file must be set when invoking CMake.
 Currently, the following method of building the GUI works on Mac and Linux.
 If running on Windows, open the fea_gui.pro file with QtCreator (included with the Qt installation) and run.
@@ -160,6 +160,35 @@ fea::Summary summary = fea::solve(job, node_list, elem_list, bc_list, force_list
 
 // print a report of the analysis
 std::cout << summary.fullReport() << std::endl;
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Upon successful compilation the full report printed to the command line should resemble:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.txt}
+Finite Element Analysis Summary
+
+Model parameters
+  Nodes                : 2
+  Elements             : 1
+  BCs                  : 6
+  Ties                 : 0
+  Forces               : 0
+
+Total time 0ms
+  Assembly time                  : 0ms
+  Preprocessesing time           : 0ms
+  Factorization time             : 0ms
+  Linear solve time              : 0ms
+  Forces solve time              : 0ms
+  File save time                 : 0ms
+
+Nodal displacements
+  Minimum : Node 0  DOF 0 Value 0.000
+  Maximum : Node 1  DOF 5 Value 0.005
+
+Nodal Forces
+  Minimum : Node 0  DOF 1 Value -1.000
+  Maximum : Node 1  DOF 1 Value 1.000
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #### Ties ####
