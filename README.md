@@ -290,6 +290,8 @@ To open the GUI navigate to the build folder and open the fea_gui executable loc
 The first set of buttons allows the path to the CSV files to be set, and the second set of controls customizes the options.
 Once the files and options have been configured, clicking the submit button will run the analysis.
 
+![GUI screenshot](assets/fea_gui_screenshot.png)
+
 ## Formatting CSV files ##
 All CSV file must be comma delimited with no spaces between values, i.e. one row of the nodal coordinates file might resemble `1.0,2.0,3.0`.
 The file indicated by the value of "nodes" should be in the format:
