@@ -24,9 +24,14 @@
 // Author: ryan.latture@gmail.com (Ryan Latture)
 
 #include <boost/format.hpp>
+#include <chrono>
+#include <cmath>
 #include <exception>
 #include <fstream>
 #include <iomanip>
+#include <iostream>
+#include <limits>
+
 #include "threed_beam_fea.h"
 
 namespace fea {

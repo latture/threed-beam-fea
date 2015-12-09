@@ -38,19 +38,12 @@
 #ifdef EIGEN_USE_MKL_ALL
 #include <Eigen/PardisoSupport>
 #else
-
 #include <Eigen/SparseLU>
-
 #endif
 
 #include <Eigen/Core>
 #include <Eigen/Geometry>
 #include <Eigen/SparseCore>
-
-#include <chrono>
-#include <cmath>
-#include <iostream>
-#include <limits>
 
 #include "containers.h"
 #include "options.h"
