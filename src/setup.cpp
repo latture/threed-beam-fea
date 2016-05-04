@@ -64,7 +64,7 @@ namespace fea {
 
         if (!config_file_ptr) {
             throw std::runtime_error(
-                    (boost::format("Cannot opwn configuration input file %s.") % config_filename).str()
+                    (boost::format("Cannot open configuration input file %s.") % config_filename).str()
             );
         }
         char readBuffer[65536];
