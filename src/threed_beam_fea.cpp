@@ -423,8 +423,9 @@ namespace fea {
         if (forces.size() > 0) {
             loadForces(force_vec, forces);
         }
-
+ 
         // compress global stiffness matrix since all non-zero values have been added.
+        Kg.prune(1.e-14);
         Kg.makeCompressed();
 
         // initialize solver based on whether MKL should be used
