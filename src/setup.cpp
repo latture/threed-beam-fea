@@ -34,7 +34,7 @@ namespace fea {
         template<typename T>
         void createVectorFromJSON(const rapidjson::Document &config_doc,
                                   const std::string &variable,
-                                  std::vector<std::vector<T>> &data) {
+                                  std::vector< std::vector<T> > &data) {
             if (!config_doc.HasMember(variable.c_str())) {
                 throw std::runtime_error(
                         (boost::format("Configuration file does not have requested member variable %s.") %
