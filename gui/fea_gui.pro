@@ -12,7 +12,7 @@ TARGET = fea_gui
 TEMPLATE = app
 
 EXT_BOOST_ROOT = ../ext/boost_1_59_0
-EXT_EIGEN_ROOT = ../ext/eigen-3.2.4
+EXT_EIGEN_ROOT = ../ext/eigen-3.2.9
 EXT_RAPIDJSON_ROOT = ../ext/rapidjson/include
 FEA_INCLUDE_ROOT = ../include
 FEA_SRC_ROOT = ../src
