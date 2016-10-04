@@ -6,6 +6,7 @@ var searchData=
   ['nodal_5fforces_5ffilename',['nodal_forces_filename',['../structfea_1_1_options.html#ad6b7ccda4984e4160c6cdbcefa496a26',1,'fea::Options']]],
   ['nodal_5fforces_5fsolve_5ftime_5fin_5fms',['nodal_forces_solve_time_in_ms',['../structfea_1_1_summary.html#a0fb2676aa71313a8b030532f9960abed',1,'fea::Summary']]],
   ['node',['node',['../structfea_1_1_b_c.html#a22487e8a29ef9567a10dacd2bf785128',1,'fea::BC::node()'],['../structfea_1_1_force.html#a9c8775a2687d7ee6056f2667b3b81e7b',1,'fea::Force::node()']]],
+  ['node_5fnumber',['node_number',['../structfea_1_1_equation_1_1_term.html#ac8d6123f8418205684e0d32083f822c9',1,'fea::Equation::Term']]],
   ['node_5fnumber_5f1',['node_number_1',['../structfea_1_1_tie.html#ab990eb9740340ad753fba08c9398bc17',1,'fea::Tie']]],
   ['node_5fnumber_5f2',['node_number_2',['../structfea_1_1_tie.html#ac6e72cd3090c0778d54aa54fdcd3c3fc',1,'fea::Tie']]],
   ['node_5fnumbers',['node_numbers',['../structfea_1_1_elem.html#a77ae99685cbc84961a7ae9ff68e3dc80',1,'fea::Elem']]],
@@ -13,6 +14,7 @@ var searchData=
   ['normal_5fvec',['normal_vec',['../structfea_1_1_props.html#abec3517a090da8454c5ad7763cfc73c0',1,'fea::Props']]],
   ['num_5fbcs',['num_bcs',['../structfea_1_1_summary.html#af17888d1299ec744967578bc5e266b7f',1,'fea::Summary']]],
   ['num_5felems',['num_elems',['../structfea_1_1_summary.html#a456814a72ac4fa826015ee73b59781cd',1,'fea::Summary']]],
+  ['num_5feqns',['num_eqns',['../structfea_1_1_summary.html#ab13e993717d979eb4c271242c126ef5b',1,'fea::Summary']]],
   ['num_5fforces',['num_forces',['../structfea_1_1_summary.html#a0404946b2b75bf763c0f3c91f58d4f70',1,'fea::Summary']]],
   ['num_5fnodes',['num_nodes',['../structfea_1_1_summary.html#a01bca53d421f7d862f21311a3f1c4589',1,'fea::Summary']]],
   ['num_5fties',['num_ties',['../structfea_1_1_summary.html#a37344cf743eed220f9e05fd967f2a481',1,'fea::Summary']]]

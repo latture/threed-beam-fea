@@ -1,9 +1,0 @@
-<map id="build/gui/fea_gui_lib_automoc.cpp" name="build/gui/fea_gui_lib_automoc.cpp">
-<area shape="rect" id="node2" href="$moc__mainwindow_8cpp.html" title="moc_mainwindow.cpp" alt="" coords="317,95,476,121"/>
-<area shape="rect" id="node3" href="$mainwindow_8h.html" title="../../gui/mainwindow.h" alt="" coords="147,169,299,196"/>
-<area shape="rect" id="node6" href="$setup_8h.html" title="setup.h" alt="" coords="389,244,455,271"/>
-<area shape="rect" id="node23" href="$summary_8h.html" title="summary.h" alt="" coords="175,319,263,345"/>
-<area shape="rect" id="node7" href="$containers_8h.html" title="containers.h" alt="" coords="55,319,151,345"/>
-<area shape="rect" id="node10" href="$csv__parser_8h.html" title="csv_parser.h" alt="" coords="770,319,869,345"/>
-<area shape="rect" id="node20" href="$options_8h.html" title="options.h" alt="" coords="287,319,365,345"/>
-</map>

@@ -1,5 +1,8 @@
 var searchData=
 [
+  ['term',['Term',['../structfea_1_1_equation_1_1_term.html',1,'fea::Equation']]],
+  ['term',['Term',['../structfea_1_1_equation_1_1_term.html#af65c586bef5f968086647aa8028225a9',1,'fea::Equation::Term::Term()'],['../structfea_1_1_equation_1_1_term.html#a24d698ad663bdd48a373c743e4cf079a',1,'fea::Equation::Term::Term(unsigned int _node_number, unsigned int _dof, double _coefficient)']]],
+  ['terms',['terms',['../structfea_1_1_equation.html#a270e2fc1882bbc16abb25e280d51141f',1,'fea::Equation']]],
   ['threed_5fbeam_5ffea_2ecpp',['threed_beam_fea.cpp',['../threed__beam__fea_8cpp.html',1,'']]],
   ['threed_5fbeam_5ffea_2eh',['threed_beam_fea.h',['../threed__beam__fea_8h.html',1,'']]],
   ['tie',['Tie',['../structfea_1_1_tie.html',1,'fea']]],

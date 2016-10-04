@@ -1,0 +1,11 @@
+digraph "build/gui" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_e19c86e2c947f4ee879e0d272e9c8264 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="build" fontname="Helvetica", fontsize="10", URL="dir_e19c86e2c947f4ee879e0d272e9c8264.html"]
+  dir_d0985cf08ca419b3ebaadf2a43dabcb7 [shape=box, label="gui", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_d0985cf08ca419b3ebaadf2a43dabcb7.html"];
+  }
+  dir_41ff9344cec4985c5998d5204fde8ca3 [shape=box label="gui" URL="dir_41ff9344cec4985c5998d5204fde8ca3.html"];
+  dir_d0985cf08ca419b3ebaadf2a43dabcb7->dir_41ff9344cec4985c5998d5204fde8ca3 [headlabel="1", labeldistance=1.5 headhref="dir_000005_000007.html"];
+}

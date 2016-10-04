@@ -1,6 +1,0 @@
-<map id="fea::GlobalStiffAssembler::operator()" name="fea::GlobalStiffAssembler::operator()">
-<area shape="rect" id="node2" href="$classfea_1_1_global_stiff_assembler.html#aad75afc9ef363da11c60a9d84f190701" title="Updates the elemental stiffness matrix for the ith element. " alt="" coords="229,27,405,69"/>
-<area shape="rect" id="node5" href="$namespacefea.html#adb99d60a0e4eb10e55a7c52044efb6e3" title="Loads any tie constraints into the set of triplets that will become the global stiffness matrix..." alt="" coords="265,93,369,120"/>
-<area shape="rect" id="node3" href="$namespacefea.html#a22c94233f560b36c5e782d6e73cebae3" title="Calculates the distance between 2 nodes. " alt="" coords="501,5,581,32"/>
-<area shape="rect" id="node4" href="$classfea_1_1_global_stiff_assembler.html#a9c403407b2a17700bec9de277ae717d8" title="Updates the rotation and transposed rotation matrices. " alt="" coords="453,57,629,98"/>
-</map>

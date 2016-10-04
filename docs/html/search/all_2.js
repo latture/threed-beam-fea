@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['c_5fdialect',['C_DIALECT',['../_c_make_c_compiler_id_8c.html#a07f8e5783674099cd7f5110e22a78cdb',1,'CMakeCCompilerId.c']]],
   ['calcaelem',['calcAelem',['../classfea_1_1_global_stiff_assembler.html#a9c403407b2a17700bec9de277ae717d8',1,'fea::GlobalStiffAssembler']]],
   ['calckelem',['calcKelem',['../classfea_1_1_global_stiff_assembler.html#aad75afc9ef363da11c60a9d84f190701',1,'fea::GlobalStiffAssembler']]],
   ['cantilever_5fbeam_5fwith_5fties_2ecpp',['cantilever_beam_with_ties.cpp',['../cantilever__beam__with__ties_8cpp.html',1,'']]],
@@ -7,12 +8,14 @@ var searchData=
   ['cmakeccompilerid_2ec',['CMakeCCompilerId.c',['../_c_make_c_compiler_id_8c.html',1,'']]],
   ['cmakecxxcompilerid_2ecpp',['CMakeCXXCompilerId.cpp',['../_c_make_c_x_x_compiler_id_8cpp.html',1,'']]],
   ['cmd_2ecpp',['cmd.cpp',['../cmd_8cpp.html',1,'']]],
+  ['coefficient',['coefficient',['../structfea_1_1_equation_1_1_term.html#a8d18a045bd4049d2e2a86a3c37f1cfcf',1,'fea::Equation::Term']]],
   ['col',['col',['../summary_8cpp.html#a72f49011b5605e0c59eabd1ab811cdfd',1,'summary.cpp']]],
   ['compiler_5fid',['COMPILER_ID',['../_c_make_c_compiler_id_8c.html#a81dee0709ded976b2e0319239f72d174',1,'COMPILER_ID():&#160;CMakeCCompilerId.c'],['../_c_make_c_x_x_compiler_id_8cpp.html#a81dee0709ded976b2e0319239f72d174',1,'COMPILER_ID():&#160;CMakeCXXCompilerId.cpp']]],
   ['computetieforces',['computeTieForces',['../namespacefea.html#ad101dfa486fc4d0bd848129ff2453139',1,'fea']]],
   ['containers_2eh',['containers.h',['../containers_8h.html',1,'']]],
   ['createbcvecfromjson',['createBCVecFromJSON',['../namespacefea.html#aa86bdb3a895956a13997d2d98097d42d',1,'fea']]],
   ['createelemvecfromjson',['createElemVecFromJSON',['../namespacefea.html#ab8f4352c4c5540dbc63ee1eedb6744c3',1,'fea']]],
+  ['createequationvecfromjson',['createEquationVecFromJSON',['../namespacefea.html#a231f5a0658f5b9fe97182c405a455d03',1,'fea']]],
   ['createforcevecfromjson',['createForceVecFromJSON',['../namespacefea.html#a0d1c659e6bbaea42ae48b489218d7530',1,'fea']]],
   ['createjobfromjson',['createJobFromJSON',['../namespacefea.html#aad7c45b93603bd80a9ff05c5e5c9a77c',1,'fea']]],
   ['createnodevecfromjson',['createNodeVecFromJSON',['../namespacefea.html#aeb3c988a0fb1f75ea8a842e3b69f13eb',1,'fea']]],

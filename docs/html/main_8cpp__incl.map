@@ -1,8 +1,0 @@
-<map id="gui/main.cpp" name="gui/main.cpp">
-<area shape="rect" id="node3" href="$mainwindow_8h.html" title="mainwindow.h" alt="" coords="170,80,279,107"/>
-<area shape="rect" id="node6" href="$setup_8h.html" title="setup.h" alt="" coords="389,155,455,181"/>
-<area shape="rect" id="node23" href="$summary_8h.html" title="summary.h" alt="" coords="175,229,263,256"/>
-<area shape="rect" id="node7" href="$containers_8h.html" title="containers.h" alt="" coords="55,229,151,256"/>
-<area shape="rect" id="node10" href="$csv__parser_8h.html" title="csv_parser.h" alt="" coords="770,229,869,256"/>
-<area shape="rect" id="node20" href="$options_8h.html" title="options.h" alt="" coords="287,229,365,256"/>
-</map>
