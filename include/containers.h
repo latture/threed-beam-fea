@@ -215,6 +215,69 @@ namespace fea {
     };
 
     /**
+     * @brief A linear multipoint constraint.
+     * @details Equation constraints are defined by a series of terms that
+     * sum to zero, e.g. `t1 + t2 + t3 ... = 0`, where `tn` is the `n`th term.
+     * Each term specifies the node number, degree of freedom and coefficient.
+     * The node number and degree of freedom specify which nodal variable
+     * (either nodal displacement or rotation) is involved with the equation
+     * constraint, and coefficient is multiplied by the specified nodal variable
+     * when forming the equation. Note, the equation sums to zero, so in order
+     * to specify that 2 nodal degrees of freedom are equal their coefficients
+     * should be equal and opposite.
+     *
+     * @code
+     * // Create an empty equation
+     * fea::Equation eqn;
+     *
+     * // Stipulate that the x and y displacement for the first node must be equal
+     * unsigned int node_number = 0;
+     * eqn.terms.push_back(fea::Equation::Term(node_number, fea::DOF::DISPLACEMENT_X, 1.0));
+     * eqn.terms.push_back(fea::Equation::Term(node_number, fea::DOF::DISPLACEMENT_Y, -1.0);
+     * @endcode
+     */
+    struct Equation {
+
+      /**
+       * @brief A single term in the equation constraint.
+       * @details Each term defines the node number, degree of freedom and
+       * coefficient.
+       */
+      struct Term {
+        unsigned int node_number;/**<Index of the node in the node list.*/
+        unsigned int dof;/**<Degree of freedom. @sa fea::DOF*/
+        double coefficient;/**<Coefficient to multiply the nodal variable by.*/
+
+        /**
+         * Default constructor
+         */
+        Term() : node_number(0), dof(0), coefficient(0) {};
+
+        /**
+         * @brief Constructor
+         * @param node_number. `unsigned int`. Index of the node within the node list.
+         * @param dof. `unsigned int`. Degree of freedom for the specified node.
+         * @param coefficient. `double`. coefficient to multiply the corresponding nodal variable by.
+         */
+        Term(unsigned int _node_number, unsigned int _dof, double _coefficient) :
+            node_number(_node_number), dof(_dof), coefficient(_coefficient) {};
+      };
+
+      std::vector<Term> terms;/**<A list of terms that sum to zero.*/
+
+      /**
+       * Default constructor
+       */
+      Equation() : terms(0) {};
+
+      /**
+       * @brief Constructor
+       * @param terms. `std::vector<Term>`. A list of terms that sum to zero.k
+       */
+      Equation(const std::vector<Term> &_terms) : terms(_terms) {};
+    };
+
+    /**
      * @brief An element of the mesh. Contains the indices of the two `fea::Node`'s that form the element as well
      * as the properties of the element given by the `fea::Props` struct.
      */

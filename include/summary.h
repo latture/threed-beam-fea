@@ -115,6 +115,11 @@ namespace fea {
         unsigned long num_ties;
 
         /**
+         * The number of equation constraints in the analysis.
+         */
+        unsigned long num_eqns;
+
+        /**
          * The resultant nodal displacement from the FE analysis.
          * `nodal_displacements` is a 2D vector where each row
          * correspond to a node, and the columns correspond to

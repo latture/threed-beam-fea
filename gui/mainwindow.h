@@ -42,6 +42,7 @@ private slots:
     void setBCsText();
     void setForcesText();
     void setTiesText();
+    void setEquationsText();
     void updateProgressText();
 
 private:
@@ -89,6 +90,7 @@ private:
     QPushButton *loadBCsButton;
     QPushButton *loadForcesButton;
     QPushButton *loadTiesButton;
+    QPushButton *loadEquationsButton;
     QPushButton *submitButton;
 
     QLineEdit *nodesLineEdit;
@@ -97,6 +99,7 @@ private:
     QLineEdit *bcsLineEdit;
     QLineEdit *forcesLineEdit;
     QLineEdit *tiesLineEdit;
+    QLineEdit *equationsLineEdit;
 
     QCheckBox *nodalDispCheckBox;
     QCheckBox *nodalForcesCheckBox;

@@ -181,15 +181,36 @@ namespace fea {
         return ties_out;
     }
 
+    std::vector<Equation> createEquationVecFromJSON(const rapidjson::Document &config_doc) {
+        std::vector< std::vector<double> > eqns_vec;
+        fea::createVectorFromJSON(config_doc, "equations", eqns_vec);
+
+        std::vector<Equation> eqns_out(eqns_vec.size());
+
+        for (size_t i = 0; i < eqns_vec.size(); ++i) {
+            if (eqns_vec[i].size() % 3 != 0) {
+                throw std::runtime_error(
+                        (boost::format("Row %d in equations does not specify [node number,dof,coefficient,...] for each term.") %
+                         i).str()
+                );
+            }
+
+            Equation eqn;
+            for (size_t j = 0; j < eqns_vec[i].size() / 3; ++j) {
+                eqn.terms.push_back(Equation::Term(
+                    (unsigned int) eqns_vec[i][3 * j],
+                    (unsigned int) eqns_vec[i][3 * j + 1],
+                    eqns_vec[i][3 * j + 2]));
+            }
+            eqns_out[i] = eqn;
+        }
+        return eqns_out;
+    }
+
     Job createJobFromJSON(const rapidjson::Document &config_doc) {
-        try {
-            std::vector<Node> nodes = createNodeVecFromJSON(config_doc);
-            std::vector<Elem> elems = createElemVecFromJSON(config_doc);
-            return Job(nodes, elems);
-        }
-        catch (std::runtime_error &e) {
-            throw;
-        }
+        std::vector<Node> nodes = createNodeVecFromJSON(config_doc);
+        std::vector<Elem> elems = createElemVecFromJSON(config_doc);
+        return Job(nodes, elems);
     }
 
     Options createOptionsFromJSON(const rapidjson::Document &config_doc) {

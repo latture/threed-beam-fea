@@ -173,6 +173,13 @@ void MainWindow::setTiesText() {
     }
 }
 
+void MainWindow::setEquationsText() {
+    QString filename = QFileDialog::getOpenFileName(this, tr("Select equations"), QDir::currentPath(), tr("Data files (*.txt *.csv);; All files (*)"));
+    if (!filename.isEmpty()) {
+        equationsLineEdit->setText(filename);
+    }
+}
+
 void MainWindow::updateProgressText() {
     if (progress) {
         progress->setLabelText(QString(feaProcess->readAllStandardOutput()));
@@ -270,6 +277,15 @@ void MainWindow::createChooseFilesGroupBox()
                              loadTiesButton,
                              row_counter++);
     connect(loadTiesButton, &QPushButton::clicked, this, &MainWindow::setTiesText);
+
+    equationsLineEdit = new QLineEdit();
+    loadEquationsButton = new QPushButton("Equations");
+    loadEquationsButton->setStatusTip(tr("Choose file containing equation constraints"));
+    initializeChooseFilesRow(glayout,
+                             equationsLineEdit,
+                             loadEquationsButton,
+                             row_counter++);
+    connect(loadEquationsButton, &QPushButton::clicked, this, &MainWindow::setEquationsText);
 
     chooseFilesGroupBox->setLayout(glayout);
 }

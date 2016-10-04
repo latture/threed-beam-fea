@@ -46,9 +46,14 @@ fea::Summary runAnalysis(const rapidjson::Document &config_doc) {
         forces = fea::createForceVecFromJSON(config_doc);
     }
 
+    std::vector<fea::Equation> equations;
+    if (config_doc.HasMember("equations")) {
+        equations = fea::createEquationVecFromJSON(config_doc);
+    }
+
     fea::Options options = fea::createOptionsFromJSON(config_doc);
 
-    return fea::solve(job, bcs, forces, ties, options);
+    return fea::solve(job, bcs, forces, ties, equations, options);
 }
 
 int main(int argc, char *argv[]) {

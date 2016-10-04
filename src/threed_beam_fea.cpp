@@ -311,6 +311,21 @@ namespace fea {
         }
     };
 
+    void loadEquations(SparseMat &Kg, const std::vector<Equation> &equations, unsigned int num_nodes, unsigned int num_bcs) {
+        size_t row_idx, col_idx;
+        const unsigned int dofs_per_elem = DOF::NUM_DOFS;
+        const unsigned int global_add_idx = dofs_per_elem * num_nodes + num_bcs;
+
+        for (size_t i = 0; i < equations.size(); ++i) {
+            row_idx = global_add_idx + i;
+            for (size_t j = 0; j < equations[i].terms.size(); ++j) {
+                col_idx = dofs_per_elem * equations[i].terms[j].node_number + equations[i].terms[j].dof;
+                Kg.insert(row_idx, col_idx) = equations[i].terms[j].coefficient;
+                Kg.insert(col_idx, row_idx) = equations[i].terms[j].coefficient;
+            }
+        }
+    };
+
     void loadTies(std::vector<Eigen::Triplet<double> > &triplets, const std::vector<Tie> &ties) {
         const unsigned int dofs_per_elem = DOF::NUM_DOFS;
         unsigned int nn1, nn2;
@@ -384,6 +399,7 @@ namespace fea {
                   const std::vector<BC> &BCs,
                   const std::vector<Force> &forces,
                   const std::vector<Tie> &ties,
+                  const std::vector<Equation> &equations,
                   const Options &options) {
         auto initial_start_time = std::chrono::high_resolution_clock::now();
 
@@ -396,7 +412,7 @@ namespace fea {
         const unsigned int dofs_per_elem = DOF::NUM_DOFS;
 
         // calculate size of global stiffness matrix and force vector
-        const int size = dofs_per_elem * job.nodes.size() + BCs.size();
+        const unsigned long size = dofs_per_elem * job.nodes.size() + BCs.size() + equations.size();
 
         // construct global stiffness matrix and force vector
         SparseMat Kg(size, size);
@@ -419,11 +435,15 @@ namespace fea {
         // load prescribed boundary conditions into stiffness matrix and force vector
         loadBCs(Kg, force_vec, BCs, job.nodes.size());
 
+        if (equations.size() > 0) {
+            loadEquations(Kg, equations, job.nodes.size(), BCs.size());
+        }
+
         // load prescribed forces into force vector
         if (forces.size() > 0) {
             loadForces(force_vec, forces);
         }
- 
+
         // compress global stiffness matrix since all non-zero values have been added.
         Kg.prune(1.e-14);
         Kg.makeCompressed();

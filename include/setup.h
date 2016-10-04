@@ -86,6 +86,14 @@ namespace fea {
     std::vector<Tie> createTieVecFromJSON(const rapidjson::Document &config_doc);
 
     /**
+     * Parses the file indicated by the "equations" key in `config_doc` into a vector of `fea::Equation`'s.
+     *
+     * @param config_doc `rapidjson::Document`. Document storing the file name containing the prescribed forces.
+     * @return Equation constraints. `std::vector<Equation>`.
+     */
+    std::vector<Equation> createEquationVecFromJSON(const rapidjson::Document &config_doc);
+
+    /**
      * Creates vectors of `fea::Node`'s and `fea::Elem`'s from the files specified in `config_doc`. A
      * `fea::Job` is created from the node and element vectors and returned.
      *

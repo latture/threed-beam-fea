@@ -96,6 +96,7 @@ namespace fea {
               num_bcs(0),
               num_forces(0),
               num_ties(0),
+              num_eqns(0),
               nodal_displacements(0),
               nodal_forces(0),
               tie_forces(0) {
@@ -112,6 +113,7 @@ namespace fea {
         fe_params[2] = fe_param_pair("BCs", num_bcs);
         fe_params[3] = fe_param_pair("Ties", num_ties);
         fe_params[4] = fe_param_pair("Forces ", num_forces);
+        fe_params[5] = fe_param_pair("Equations ", num_eqns);
 
         // get the maximum number of digits in the model parameters for formatting
         int max_digits = 1;

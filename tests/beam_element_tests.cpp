@@ -185,7 +185,8 @@ TEST_F(beamFEATest, AssemblesGlobalStiffness) {
 
 TEST_F(beamFEATest, CorrectNodalDisplacementsNoTies) {
     std::vector<Tie> ties;
-    Summary summary = solve(JOB_L_BRACKET, BCS_L_BRACKET, FORCES_L_BRACKET, ties, Options());
+    std::vector<Equation> equations;
+    Summary summary = solve(JOB_L_BRACKET, BCS_L_BRACKET, FORCES_L_BRACKET, ties, equations, Options());
 
     // the first 4 rows check nodal displacements
     // the last row is associated with the reaction
@@ -236,7 +237,9 @@ TEST_F(beamFEATest, CorrectNodalDisplacementsWithStiffTies) {
 
     std::vector<Force> forces;
 
-    Summary summary = solve(job_tie, bcs, forces, ties, Options());
+    std::vector<Equation> equations;
+
+    Summary summary = solve(job_tie, bcs, forces, ties, equations, Options());
 
     // The verification program used to generate expected values outputs data as floats
     std::vector<std::vector<double> > expected = {{0., 0.,                  0., 0.,      0., 0.},
@@ -255,13 +258,41 @@ TEST_F(beamFEATest, CorrectNodalDisplacementsWithStiffTies) {
     }
 }
 
+TEST_F(beamFEATest, CorrectDisplacementWithEquationsCantileverBeam) {
+     std::vector<BC> bcs = {BC(0, 0, 0.1),
+                            BC(0, 1, 0.0),
+                            BC(0, 2, 0.0),
+                            BC(0, 3, 0.0),
+                            BC(0, 4, 0.0),
+                            BC(0, 5, 0.0)};
+
+    std::vector<Tie> ties;
+    std::vector<Force> forces;
+
+    Equation eqn;
+    eqn.terms.push_back(Equation::Term(0, 0, 1));
+    eqn.terms.push_back(Equation::Term(1, 0, 1));
+    std::vector<Equation> equations = {eqn};
+
+    Summary summary = solve(JOB_CANTILEVER, bcs, forces, ties, equations, Options());
+
+    std::vector<std::vector<double> > expected = {{0.1, 0.,0., 0.,  0.,  0.},
+                                                  {-0.1, 0., 0., 0., 0., 0.}};
+
+    for (size_t i = 0; i < summary.nodal_displacements.size(); ++i) {
+        for (size_t j = 0; j < summary.nodal_displacements[i].size(); ++j)
+                EXPECT_DOUBLE_EQ(expected[i][j], summary.nodal_displacements[i][j]);
+    }
+}
+
 // This is simple cantilever beam with a point load at the
 // free end. This checks the end displacements match the analytical results.
 TEST_F(beamFEATest, CorrectTipDisplacementCantileverBeam) {
 
     std::vector<Tie> ties;
+    std::vector<Equation> equations;
 
-    Summary summary = solve(JOB_CANTILEVER, BCS_CANTILEVER, FORCES_CANTILEVER, ties, Options());
+    Summary summary = solve(JOB_CANTILEVER, BCS_CANTILEVER, FORCES_CANTILEVER, ties, equations, Options());
 
     // the first row checks nodal displacements of fixed node are zero
     // the second row checks the analytical result for tip displacement
@@ -282,17 +313,15 @@ TEST_F(beamFEATest, CorrectTipDisplacementCantileverBeam) {
 TEST_F(beamFEATest, CorrectTipForcesCantileverBeam) {
 
     std::vector<Tie> ties;
+    std::vector<Equation> equations;
     std::vector<Force> forces;
     std::vector<BC> bcs = BCS_CANTILEVER;
     bcs.push_back(BC(1, 0, 0.1));
     bcs.push_back(BC(1, 1, 0.1));
 
     Options opts;
-    opts.save_report = true;
-    opts.save_nodal_forces = true;
-    opts.save_nodal_displacements = true;
 
-    Summary summary = solve(JOB_CANTILEVER, bcs, forces, ties, opts);
+    Summary summary = solve(JOB_CANTILEVER, bcs, forces, ties, equations, opts);
 
     std::vector<std::vector<double> > expected = {{-0.1, -0.3, 0., 0.,  0.,  -0.3},
                                                   {0.1,  0.3,  0., 0.0, 0.0, 0.0}};
@@ -337,11 +366,12 @@ TEST_F(beamFEATest, CorrectDisplacementWeakTies) {
     std::vector<Tie> ties = {Tie(1, 2, 0.01, 0.01)};
 
     std::vector<Force> forces;
+    std::vector<Equation> equations;
 
     Options opts;
     opts.epsilon = 1e-10;
 
-    Summary summary = solve(job_tie, bcs, forces, ties, opts);
+    Summary summary = solve(job_tie, bcs, forces, ties, equations, opts);
 
     std::vector<std::vector<double> > expected = {{0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
                                                   {0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
@@ -385,11 +415,12 @@ TEST_F(beamFEATest, CorrectForcesWeakTies) {
     std::vector<Tie> ties = {Tie(1, 2, 0.01, 0.01)};
 
     std::vector<Force> forces;
+    std::vector<Equation> equations;
 
     Options opts;
     opts.epsilon = 1e-10;
 
-    Summary summary = solve(job_tie, bcs, forces, ties, opts);
+    Summary summary = solve(job_tie, bcs, forces, ties, equations, opts);
 
     std::vector<std::vector<double> > expected = {{0.005, 0.0, 0.0, 0.005, 0.0, 0.0}};
 

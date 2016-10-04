@@ -68,6 +68,9 @@ int main(int argc, char *argv[])
     // initialize empty vector of ties
     std::vector<Tie> ties;
 
+    // initialize empty vector of equation constraints
+    std::vector<Equation> equations;
+
     // initialize vector of prescribed forces
     std::vector<Force> forces;
 
@@ -75,7 +78,7 @@ int main(int argc, char *argv[])
     Options opts;
 
     // solve for nodal displacements
-    Summary summary = solve(job, bcs, forces, ties, opts);
+    Summary summary = solve(job, bcs, forces, ties, equations, opts);
 
     // write report to terminal
     std::cout << summary.FullReport() << std::endl;

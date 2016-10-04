@@ -179,6 +179,8 @@ namespace fea {
     */
     void loadBCs(SparseMat &Kg, ForceVector &force_vec, const std::vector<BC> &BCs, unsigned int num_nodes);
 
+    void loadEquations(SparseMat &Kg, const std::vector<Equation> &equations, unsigned int num_nodes, unsigned int num_bcs);
+
     /**
      * @brief Loads any tie constraints into the set of triplets that will become the global stiffness matrix.
      * @details Tie constraints are enforced via linear springs between the 2 specified
@@ -228,6 +230,7 @@ namespace fea {
                   const std::vector<BC> &BCs,
                   const std::vector<Force> &forces,
                   const std::vector<Tie> &ties,
+                  const std::vector<Equation> &equations,
                   const Options &options);
 } // namespace fea
 

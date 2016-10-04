@@ -21,11 +21,11 @@ Alternatively, I can package pre-built binaries if there is interest.
 
 ## Introduction ##
 This contains a C++ implementation of 3D Euler-Bernoulli beam element formulation.
-An analysis can be formulated in C++, through a command line interface via a config file, or using the graphical user interface.
+An analysis can be formulated in C++, through a command line interface via a configuration file (in JSON format), or using the graphical user interface.
 
 ### Method 1: Using C++ ###
-An analysis consists of the `fea::Job` as well as any boundary conditions (`fea::BC`), prescribed nodal forces (`fea::Force`), and ties (`fea::Tie`).
-The latter of which ties to nodes together via a linear springs between all translational and rotational degrees of freedom.
+An analysis consists of the `fea::Job` as well as any boundary conditions (`fea::BC`), prescribed nodal forces (`fea::Force`), ties (`fea::Tie`) and equation constraints (`fea::Equation`).
+Ties to nodes together via a linear springs between all translational and rotational degrees of freedom, and equation constraints allow linear multi-point constraints to be applied to the model.
 The `fea::Options` struct can be used to request results of the analysis be written to disk as well as modify various aspect of the analysis.
 
 #### Forming the job ####
@@ -156,7 +156,10 @@ The `fea::Summary` object can return a report of the analysis in the form of a s
 // form an empty vector of ties since none were prescribed
 std::vector<fea::Tie> tie_list;
 
-fea::Summary summary = fea::solve(job, node_list, elem_list, bc_list, force_list, tie_list, opts);
+// also create an empty list of equations as none were prescribed
+std::vector<fea::Equation> eqn_list;
+
+fea::Summary summary = fea::solve(job, node_list, elem_list, bc_list, force_list, tie_list, eqn_list, opts);
 
 // print a report of the analysis
 std::cout << summary.fullReport() << std::endl;
@@ -173,6 +176,7 @@ Model parameters
   BCs                  : 6
   Ties                 : 0
   Forces               : 0
+  Equations            : 0
 
 Total time 0ms
   Assembly time                  : 0ms
@@ -190,6 +194,7 @@ Nodal Forces
   Minimum : Node 0  DOF 1 Value -1.000
   Maximum : Node 1  DOF 1 Value 1.000
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 #### Ties ####
 Ties are enforced by placing linear springs between all degrees of freedom for 2 nodes.
@@ -242,6 +247,24 @@ fea::Tie tie1(nn1, nn2, lmult, rmult);
 std::vector<fea::Tie> tie_list = {tie1};
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+#### Equations ####
+Equations are linear multi-point constraints that are applied to nodal degrees of freedom.
+Each equation is composed of a list of terms that sum to zero, e.g. `t1 + t2 + t3 ... = 0`, where `tn` is the `n`th term.
+Each term specifies the node number, degree of freedom and coefficient.
+The node number and degree of freedom specify which nodal variable (either nodal displacement or rotation) is involved with the equation constraint,
+and coefficient is multiplied by the specified nodal variable when forming the equation.
+Note, the equation sums to zero, so in order to specify that 2 nodal degrees of freedom are equal their coefficients should be equal and opposite.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.cpp}
+// Create an empty equation
+fea::Equation eqn;
+
+// Stipulate that the x and y displacement for the first node must be equal
+unsigned int node_number = 0;
+eqn.terms.push_back(fea::Equation::Term(node_number, fea::DOF::DISPLACEMENT_X, 1.0));
+eqn.terms.push_back(fea::Equation::Term(node_number, fea::DOF::DISPLACEMENT_Y, -1.0);
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 ### Method 2: Using the command line interface ###
 After using CMake to build the targets, an executable will be created that provide a command line interface (CLI) to the beam element code.
 Once in the build directory, navigate to the `bin` folder containing fea_cmd. running `./fea_cmd -h` from the terminal will show the help
@@ -251,12 +274,13 @@ An example is shown below.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.txt}
 {
-    "nodes"   : "path/to/nodes.csv",
-    "elems"   : "path/to/elems.csv",
-    "props"   : "path/to/props.csv",
-    "bcs"     : "path/to/bcs.csv",
-    "forces"  : "path/to/forces.csv",
-    "ties"    : "path/to/ties.csv",
+    "nodes"      : "path/to/nodes.csv",
+    "elems"      : "path/to/elems.csv",
+    "props"      : "path/to/props.csv",
+    "bcs"        : "path/to/bcs.csv",
+    "forces"     : "path/to/forces.csv",
+    "ties"       : "path/to/ties.csv",
+    "equations"  : "path/to/equations.csv",
     "options" : {
                     "epsilon" : 1.0E-14,
                     "csv_delimiter" : ",",
@@ -275,7 +299,7 @@ An example is shown below.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The use of a JSON document avoids the need to set each of these options using command line options, which can become tedious when running multiple jobs.
-The "nodes", "elems", and "props" keys are required. Keys "bcs", "forces", and "ties" are optional--if not provided the analysis will assume none were prescribed.
+The "nodes", "elems", and "props" keys are required. Keys "bcs", "forces", "ties" and "equations" are optional--if not provided the analysis will assume none were prescribed.
 If the "options" key is not provided the analysis will run with the default options.
 Any of all of the "options" keys presented above can be used to customize the analysis.
 If a key is not provided the default value is used in its place.
@@ -330,7 +354,7 @@ elN_EA,elN_EIz,elN_EIy,elN_GJ,elN_nvec_x_comp,elN_nvec_y_comp,elN_nvec_z_comp
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 where each entry is a double and each line has 7 entries.
-The "bcs" and "forces" CSV files have the same format.
+The "bcs" and "forces" CSV files have the same format as each other.
 Each line specifies the node number, degree of freedom, and value:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.txt}
@@ -358,6 +382,24 @@ tieN_node_num1,tieN_node_num2,tieN_lmult,tieN_rmult
 
 where `lmult` is the spring constant for the translational degrees of freedom
 and `rmult` is the spring constant for the rotational degrees of freedom.
+Equation constraints are specified by a series of 3 items (representing a single term) repeated until the desired number of terms are created.
+Each term is defined by the node index, degree of freedom for the specified node, and the coefficient that will multiply the nodal degree of freedom.
+For example a single equation constraint that specifies that the x and y displacements for the first node must remain equal is given by:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.txt}
+0,0,1,0,1,-1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+in general the equations CSV file will be resemble:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.txt}
+eq1_term1_node,eq1_term1_dof,eq1_term1_coeff,...
+eq2_term1_node,eq2_term1_dof,eq2_term1_coeff,...
+...
+...
+...
+eqN_term1_node,eqN_term1_dof,eqN_term1_coeff,...
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ## Contact ##
 

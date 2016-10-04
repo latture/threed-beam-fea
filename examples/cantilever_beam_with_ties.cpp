@@ -76,11 +76,14 @@ int main(int argc, char *argv[])
     // apply force on node at (2,0,0)
     std::vector<Force> forces= {Force(3, DOF::DISPLACEMENT_Y, 0.01)};
 
+    // initialize empty vector of equation constraints
+    std::vector<Equation> equations;
+
     // use default options
     Options opts;
 
     // solve for nodal displacements
-    Summary summary = solve(job, bcs, forces, ties, opts);
+    Summary summary = solve(job, bcs, forces, ties, equations, opts);
 
     // write report to terminal
     std::cout << summary.FullReport() << std::endl;

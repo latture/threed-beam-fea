@@ -230,6 +230,38 @@ TEST(SetupTest, CreatesCorrectTiesFromJSON) {
     }
 }
 
+TEST(SetupTest, CreatesCorrectEquationsFromJSON) {
+    std::string equations_file = "CreatesCorrectEquations.csv";
+    std::string json = "{\"equations\":\"" + equations_file + "\"}\n";
+    std::string filename = "CreatesCorrectEquations.json";
+    writeStringToTxt(filename, json);
+
+    rapidjson::Document doc = parseJSONConfig(filename);
+
+    std::vector<std::vector<double> > expected = {{1, 2, 3, 4, 5, 6},
+                                                  {7, 8, 9, 10, 11, 12}};
+
+    CSVParser csv;
+    csv.write(equations_file, expected, 1, ",");
+
+    std::vector<Equation> equations = createEquationVecFromJSON(doc);
+
+    for (size_t i = 0; i < equations.size(); ++i) {
+        for (size_t j = 0; j < equations[i].terms.size() / 3; ++j) {
+            EXPECT_EQ((unsigned int) expected[i][3 * j], equations[i].terms[j].node_number);
+            EXPECT_EQ((unsigned int) expected[i][3 * j + 1], equations[i].terms[j].dof);
+            EXPECT_DOUBLE_EQ(expected[i][3 * j + 2], equations[i].terms[j].coefficient);
+        }
+    }
+
+    if (std::remove(filename.c_str()) != 0) {
+        std::cerr << "Error removing test csv file " << filename << ".\n";
+    }
+    if (std::remove(equations_file.c_str()) != 0) {
+        std::cerr << "Error removing test csv file " << equations_file << ".\n";
+    }
+}
+
 TEST(SetupTest, CreatesCorrectJobFromJSON) {
     std::string elems_file = "CreatesCorrectJob_elems.csv";
     std::string props_file = "CreatesCorrectJob_props.csv";
