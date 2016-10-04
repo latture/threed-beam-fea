@@ -75,13 +75,8 @@ namespace fea {
     }
 
     std::vector<Node> createNodeVecFromJSON(const rapidjson::Document &config_doc) {
-        std::vector<std::vector<double> > nodes_vec;
-        try {
-            fea::createVectorFromJSON(config_doc, "nodes", nodes_vec);
-        }
-        catch (std::runtime_error &e) {
-            throw;
-        }
+        std::vector< std::vector<double> > nodes_vec;
+        fea::createVectorFromJSON(config_doc, "nodes", nodes_vec);
 
         std::vector<Node> nodes_out(nodes_vec.size());
         Node n;
@@ -100,15 +95,10 @@ namespace fea {
     }
 
     std::vector<Elem> createElemVecFromJSON(const rapidjson::Document &config_doc) {
-        std::vector<std::vector<unsigned int> > elems_vec;
-        std::vector<std::vector<double> > props_vec;
-        try {
-            fea::createVectorFromJSON(config_doc, "elems", elems_vec);
-            fea::createVectorFromJSON(config_doc, "props", props_vec);
-        }
-        catch (std::runtime_error &e) {
-            throw;
-        }
+        std::vector< std::vector<unsigned int> > elems_vec;
+        std::vector< std::vector<double> > props_vec;
+        fea::createVectorFromJSON(config_doc, "elems", elems_vec);
+        fea::createVectorFromJSON(config_doc, "props", props_vec);
 
         if (elems_vec.size() != props_vec.size()) {
             throw std::runtime_error("The number of rows in elems did not match props.");
@@ -139,13 +129,8 @@ namespace fea {
     }
 
     std::vector<BC> createBCVecFromJSON(const rapidjson::Document &config_doc) {
-        std::vector<std::vector<double> > bcs_vec;
-        try {
-            fea::createVectorFromJSON(config_doc, "bcs", bcs_vec);
-        }
-        catch (std::runtime_error &e) {
-            throw;
-        }
+        std::vector< std::vector<double> > bcs_vec;
+        fea::createVectorFromJSON(config_doc, "bcs", bcs_vec);
 
         std::vector<BC> bcs_out(bcs_vec.size());
 
@@ -161,13 +146,8 @@ namespace fea {
     }
 
     std::vector<Force> createForceVecFromJSON(const rapidjson::Document &config_doc) {
-        std::vector<std::vector<double> > forces_vec;
-        try {
-            fea::createVectorFromJSON(config_doc, "forces", forces_vec);
-        }
-        catch (std::runtime_error &e) {
-            throw;
-        }
+        std::vector< std::vector<double> > forces_vec;
+        fea::createVectorFromJSON(config_doc, "forces", forces_vec);
 
         std::vector<Force> forces_out(forces_vec.size());
 
@@ -183,13 +163,8 @@ namespace fea {
     }
 
     std::vector<Tie> createTieVecFromJSON(const rapidjson::Document &config_doc) {
-        std::vector<std::vector<double> > ties_vec;
-        try {
-            fea::createVectorFromJSON(config_doc, "ties", ties_vec);
-        }
-        catch (std::runtime_error &e) {
-            throw;
-        }
+        std::vector< std::vector<double> > ties_vec;
+        fea::createVectorFromJSON(config_doc, "ties", ties_vec);
 
         std::vector<Tie> ties_out(ties_vec.size());
 
