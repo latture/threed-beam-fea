@@ -1,0 +1,8 @@
+build/
+.idea/
+data/
+*.csv
+*.json
+.DS_Store
+.clang_complete
+

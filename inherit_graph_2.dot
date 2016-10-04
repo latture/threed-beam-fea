@@ -1,0 +1,7 @@
+digraph "Graphical Class Hierarchy"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="fea::Elem",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structfea_1_1_elem.html",tooltip="An element of the mesh. Contains the indices of the two fea::Node&#39;s that form the element as well as ..."];
+}
