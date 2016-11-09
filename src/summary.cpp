@@ -107,7 +107,7 @@ namespace fea {
         std::string report = std::string("\nFinite Element Analysis Summary\n\nModel parameters\n");
         boost::format fe_params_fmt = boost::format("\t%s : %d\n");
 
-        std::vector<fe_param_pair> fe_params(5);
+        std::vector<fe_param_pair> fe_params(6);
         fe_params[0] = fe_param_pair("Nodes", num_nodes);
         fe_params[1] = fe_param_pair("Elements", num_elems);
         fe_params[2] = fe_param_pair("BCs", num_bcs);
