@@ -298,8 +298,8 @@ TEST_F(beamFEATest, CorrectTipDisplacementCantileverBeam) {
     // the second row checks the analytical result for tip displacement
     // for the given load in the y-direction of 0.01 yields the correct
     // displacement and rotation
-    std::vector<std::vector<double> > expected = {{0., 0.,                   0., 0.,  0.,  0.},
-                                                  {0., 0.033333333333333333, 0., 0.0, 0.0, 0.05}};
+    std::vector<std::vector<double> > expected = {{0., 0.,                   0., 0., 0., 0.},
+                                                  {0., 0.033333333333333333, 0., 0., 0., 0.05}};
 
     for (size_t i = 0; i < summary.nodal_displacements.size(); ++i) {
         for (size_t j = 0; j < summary.nodal_displacements[i].size(); ++j)
@@ -323,15 +323,14 @@ TEST_F(beamFEATest, CorrectTipForcesCantileverBeam) {
 
     Summary summary = solve(JOB_CANTILEVER, bcs, forces, ties, equations, opts);
 
-    std::vector<std::vector<double> > expected = {{-0.1, -0.3, 0., 0.,  0.,  -0.3},
-                                                  {0.1,  0.3,  0., 0.0, 0.0, 0.0}};
+    std::vector<std::vector<double> > expected = {{-0.1, -0.3, 0., 0., 0., -0.3},
+                                                  { 0.1,  0.3, 0., 0., 0.,  0.}};
 
     for (size_t i = 0; i < summary.nodal_forces.size(); ++i) {
         for (size_t j = 0; j < summary.nodal_forces[i].size(); ++j)
                 EXPECT_DOUBLE_EQ(expected[i][j], summary.nodal_forces[i][j]);
     }
 }
-
 
 // This tests the tie constraints correctly deform.
 // I have extremely stiff elements and apply a
