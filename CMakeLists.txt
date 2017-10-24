@@ -18,9 +18,9 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-set(EXT_BOOST_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/ext/boost_1_59_0)
-set(EXT_EIGEN_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/ext/eigen-3.2.9)
-set(EXT_RAPIDJSON_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/ext/rapidjson/include)
+set(EXT_BOOST_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/ext/boost-1.65.1)
+set(EXT_EIGEN_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/ext/eigen-3.3.4)
+set(EXT_RAPIDJSON_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/ext/rapidjson-1.1.0/include)
 set(EXT_TCLAP_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/ext/tclap-1.2.1/include)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include
@@ -29,9 +29,6 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include
                     ${EXT_RAPIDJSON_ROOT}
                     ${EXT_TCLAP_ROOT}
                     )
-
-add_library(boostlib ${EXT_BOOST_ROOT}/libs/smart_ptr/src/sp_collector.cpp
-                     ${EXT_BOOST_ROOT}/libs/smart_ptr/src/sp_debug_hooks.cpp)
 
 add_subdirectory(src)
 

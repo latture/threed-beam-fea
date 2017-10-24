@@ -6,21 +6,21 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
            ON)
 endif()
 
-add_subdirectory(gtest-1.7.0)
+add_subdirectory(gtest-1.8.0)
 
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 add_executable(runFEAUnitTests beam_element_tests.cpp)
-target_link_libraries(runFEAUnitTests threed_beam_fea boostlib gtest gtest_main)
+target_link_libraries(runFEAUnitTests threed_beam_fea gtest gtest_main)
 
 add_test(runUnitTests runFEAUnitTests)
 
 add_executable(runCSVParserUnitTests csv_parser_tests.cpp)
-target_link_libraries(runCSVParserUnitTests threed_beam_fea boostlib gtest gtest_main)
+target_link_libraries(runCSVParserUnitTests threed_beam_fea gtest gtest_main)
 
 add_test(runUnitTests runCSVParserUnitTests)
 
 add_executable(runSetupUnitTests setup_tests.cpp)
-target_link_libraries(runSetupUnitTests threed_beam_fea boostlib gtest gtest_main)
+target_link_libraries(runSetupUnitTests threed_beam_fea gtest gtest_main)
 
 add_test(runUnitTests runSetupUnitTests)
